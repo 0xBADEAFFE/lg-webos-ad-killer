@@ -16,9 +16,11 @@ def pkill(name):
     os.system(f'pkill -f {shlex.quote(name)}')
 
 
-def mount(sorce, destination):
+def mount(source, destination):
+    os.system(f'chmod 600 {shlex.quote(source)}')
     os.system(f'umount {shlex.quote(destination)}')
-    os.system(f'mount --bind {shlex.quote(sorce)} {shlex.quote(destination)}')
+    os.system(f'mount --bind {shlex.quote(source)} {shlex.quote(destination)}')
+    os.system(f'chmod 400 {shlex.quote(source)}')
 
 
 def clean_shelfs(source, destination):
